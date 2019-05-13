@@ -120,11 +120,11 @@
         <boolProp name="resetInterpreter">false</boolProp>
         <stringProp name="parameters"></stringProp>
         <stringProp name="filename"></stringProp>
-        <stringProp name="script">
+        <stringProp name="script">// Use the -Jstack command line param as the host, (defaults to dev.example.com if unset)
 vars.put(&quot;COMMON_HOST&quot;, &quot;${STACK}&quot;);
 
-
-//Currently all environments are https, so use this globally.
+// Currently all environments are https, so use this globally as a default.
+// __P Test Variables are set to be &quot;notset&quot; if they were not specified via the command line.
 if(vars.get(&quot;COMMON_PORT&quot;).equals(&quot;notset&quot;) == true) {
 	vars.put(&quot;COMMON_PORT&quot;, &quot;${PORT_HTTPS}&quot;);
 }
@@ -140,7 +140,8 @@ if(vars.get(&quot;COMMON_PROTOCOL&quot;).equals(&quot;notset&quot;) == true) {
         <boolProp name="resetInterpreter">false</boolProp>
         <stringProp name="parameters"></stringProp>
         <stringProp name="filename"></stringProp>
-        <stringProp name="script">
+        <stringProp name="script">// Example pre-script setup &amp; verification - this one checks username/password.
+
 boolean setCorrectly = true;
 
 if(true == vars.get(&quot;COMMON_API_USERNAME&quot;).equals(&quot;notset&quot;))
@@ -154,10 +155,14 @@ if(true == vars.get(&quot;COMMON_API_PASSWORD&quot;).equals(&quot;notset&quot;))
 	setCorrectly = false;
 }
 
+// Example enforcement of input variables &amp; quitting
 if (false == setCorrectly)
 {
-     org.apache.jmeter.engine.StandardJMeterEngine.stopThread(Thread.currentThread().getName()); 
-     print (&quot;Stopped the thread from pre processor&quot;);
+     // org.apache.jmeter.engine.StandardJMeterEngine.stopThread(Thread.currentThread().getName()); 
+     // print (&quot;Stopped the thread from pre processor&quot;);
+
+     // Uncomment the above lines to quit if username/password are not set via command line.
+     print (&quot;Warn: username and password have not been set.&quot;);
 }
 
 
