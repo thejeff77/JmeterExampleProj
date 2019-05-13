@@ -1,0 +1,5 @@
+# Jmeter output files and directories
+jmeter.log
+
+# other
+.DS_Store
