@@ -9,16 +9,16 @@
 
 ### Where to get started: 
 
-1. Configure jmeter for command line launch by adding Jmeter's /bin bath to your PATH in either Windows or Linux. Linux is done via .profile or .bashrc typically.
-2. Launch the project for the first time with: ">jmeter -t API_Test.jmx" (or ">jmeter.bat -t API_Test.jmx" on Linux)
+1. Configure jmeter for command line launch by adding Jmeter's /bin bath to your PATH in either Windows or Linux. Linux is typically done via .profile or .bashrc typically.
+2. Launch the project for the first time with: ">jmeter -t API_Test.jmx" (or ">jmeter.bat -t API_Test.jmx" on Windows)
 3. Open "Test Variables" and familiarize yourself with the __P format. In the following Value: "${__P(stack,dev.example.com)}", the "__P(stack" says to accept a command line parameter named "-Jstack=<value>" and if it isn't set, use "dev.example.com".
 4. Replace "dev.example.com" in the Value mentioned in step 3 with your default test environment (the one to use as default if left unspecified).
 5. Run test with example input specified below. View the "Debug Sampler" to see how all variables are set. View the "Results Tree" for detailed HTTP results.
 
 ### Running Example Project in Jmeter
 
-    	COMMAND LINE MODE:
-    	Make the tests run in command line mode using the -n flag.
+	COMMAND LINE MODE:
+	Make the tests run in command line mode using the -n flag.
 
 	USAGE WITH REQUIRED FIELDS:
 	$jmeter -Jusername=<common_api_username> -Jpassword=<common_api_password> 
